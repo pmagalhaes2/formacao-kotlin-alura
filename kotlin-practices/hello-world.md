@@ -16,6 +16,10 @@ You must print the message " Hello World! " and then the end of the line, as sho
 
 
 
-|                |Input example |Output Example                         |
-|----------------|-------------------------------|-----------------------------|
-|                |          |Hello World!            |
+|Input example |Output Example                         |
+|-------------------------------|-----------------------------|
+|          |Hello World!            |
+
+### **Resolution**
+
+[1000 - Hello World!](https://github.com/pmagalhaes2/kotlin-practices/blob/main/kotlin/hello_world.kt)
