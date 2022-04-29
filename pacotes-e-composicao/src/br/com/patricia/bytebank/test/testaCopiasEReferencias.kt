@@ -1,3 +1,4 @@
+import br.com.patricia.bytebank.model.Cliente
 import br.com.patricia.bytebank.model.ContaCorrente
 
 fun testaCopiasEReferencias() {
@@ -10,8 +11,10 @@ fun testaCopiasEReferencias() {
     println("$numeroY")
 
     //tipos por referência - apontam para o mesmo endereço de memória
-    val contaJoao = ContaCorrente("João", 1002)
-    var contaMaria = ContaCorrente("Maria", 1003)
+    val joao = Cliente(nome = "João", cpf = "", senha = 457)
+    val contaJoao = ContaCorrente(joao, 1002)
+    val maria = Cliente(nome = "João", cpf = "", senha = 789)
+    var contaMaria = ContaCorrente(maria, 1003)
 
     println("`heranca-polimorfismo-interface`.src.br.com.patricia.bytebank.model.Conta João: ${contaJoao.titular}")
     println("`heranca-polimorfismo-interface`.src.br.com.patricia.bytebank.model.Conta Maria: ${contaMaria.titular}")

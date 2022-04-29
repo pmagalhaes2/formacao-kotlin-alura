@@ -1,12 +1,36 @@
-import br.com.patricia.bytebank.model.ContaCorrente
-import br.com.patricia.bytebank.model.ContaPoupanca
-import br.com.patricia.bytebank.model.ContaSalario
+import br.com.patricia.bytebank.model.*
 
 fun testaTiposDeContas() {
-    val contaCorrente = ContaCorrente(titular = "Patricia", nroConta = 4578)
-    val contaPoupanca = ContaPoupanca(titular = "Alex", nroConta = 1453)
-    val contaSalario = ContaSalario(titular = "Bruno", nroConta = 1548)
+    val contaCorrente = ContaCorrente(
+        titular = Cliente(
+            nome = "Patricia",
+            cpf = "333.333.333-33",
+            senha = 123,
+            endereco = Endereco(
+                logradouro = "Rua Vergueiro",
+                numero = 150,
+                bairro = "Vila Olímpia",
+                cidade = "São Paulo",
+                estado = "SP",
+                cep = "00000-000",
+            )
+        ),
+        nroConta = 4578
+    )
+    val contaPoupanca = ContaPoupanca(titular = Cliente(
+        nome = "Alex",
+        cpf = "",
+        senha = 541
+    ), nroConta = 1453)
+    val contaSalario = ContaSalario(titular = Cliente(
+        nome = "Bruno",
+        cpf = "",
+        senha = 745
+    ), nroConta = 1548)
 
+    println("Títular: ${contaCorrente.titular.nome}")
+    println("CPF: ${contaCorrente.titular.cpf}")
+    println("Endereco: ${contaCorrente.titular.endereco.logradouro}")
 
     contaCorrente.deposita(1000.0)
     contaPoupanca.deposita(1000.0)

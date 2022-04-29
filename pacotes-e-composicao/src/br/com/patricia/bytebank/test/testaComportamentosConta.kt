@@ -1,7 +1,10 @@
+import br.com.patricia.bytebank.model.Cliente
 import br.com.patricia.bytebank.model.ContaCorrente
 
 fun testaComportamentosConta() {
-    val contaPatricia = ContaCorrente("Patricia", 1000)
+
+    val patricia = Cliente(nome = "Patricia", cpf="", senha = 123)
+    val contaPatricia = ContaCorrente(patricia, 1000)
     contaPatricia.deposita(450.0)
 
     println("Titular da conta: ${contaPatricia.titular}")
@@ -9,7 +12,8 @@ fun testaComportamentosConta() {
     println("Saldo da conta: ${contaPatricia.saldoConta}")
     println("")
 
-    val contaPriscila = ContaCorrente("Priscila", 1001)
+    val priscila = Cliente(nome = "Priscila", cpf="", senha = 564)
+    val contaPriscila = ContaCorrente(priscila, 1001)
     contaPriscila.deposita(200.0)
 
     println("Titular da conta: ${contaPriscila.titular}")

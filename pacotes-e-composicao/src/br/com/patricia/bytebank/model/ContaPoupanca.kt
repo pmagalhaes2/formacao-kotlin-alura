@@ -1,7 +1,7 @@
 package br.com.patricia.bytebank.model
 
 class ContaPoupanca(
-    titular: String,
+    titular: Cliente,
     nroConta: Int
 ) : ContaTransferivel(
     titular = titular,
