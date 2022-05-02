@@ -26,6 +26,6 @@ fun main() {
 
     testaTiposDeContas()
 
-    println("${totalContas}")
+    println("Total contas criadas: ${Conta.Contador.totalContas}")
 }
 

@@ -1,18 +1,19 @@
 package br.com.patricia.bytebank.model
 
-var totalContas = 0
-    private set
-
 abstract class Conta(
     val titular: Cliente,
     val nroConta: Int
 ) {
     var saldoConta = 0.0
         protected set
+    companion object Contador{ //Não é obrigatório atribuir um nome ao objeto
+        var totalContas = 0
+            private set
+    }
 
     init {
         println("Criando conta..")
-        totalContas++
+        Contador.totalContas++
     }
 
 //    constructor(titular: String, nroConta: Int) {
@@ -25,6 +26,7 @@ abstract class Conta(
             this.saldoConta += valor
         }
     }
+
 
     abstract fun saca(valor: Double)
 
