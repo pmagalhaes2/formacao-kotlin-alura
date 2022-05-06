@@ -5,8 +5,6 @@ import br.com.alura.forum.model.Resposta
 import br.com.alura.forum.model.Topico
 import br.com.alura.forum.model.Usuario
 import org.springframework.stereotype.Service
-import java.util.*
-import java.util.stream.Collectors
 
 @Service
 class RespostaService(private var respostas: List<Resposta>) {
@@ -45,13 +43,13 @@ class RespostaService(private var respostas: List<Resposta>) {
             solucao = false
         )
 
-        respostas = Arrays.asList(resposta, resposta2)
+        respostas = listOf(resposta, resposta2)
     }
 
     fun listar(idTopico: Long): List<Resposta> {
-        return respostas.stream().filter { r ->
+        return respostas.filter { r ->
             r.topico.id == idTopico
-        }.collect(Collectors.toList())
+        }.toList()
     }
 
 }

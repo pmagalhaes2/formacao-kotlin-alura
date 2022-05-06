@@ -61,16 +61,24 @@ class TopicoService(private var topicos: List<Topico>) {
 
         )
 
-        topicos = Arrays.asList(topico, topico2, topico3)
+//        topicos = Arrays.asList(topico, topico2, topico3)
+        topicos = listOf(topico, topico2, topico3)
     }
 
     fun listar(): List<Topico> {
         return topicos
     }
 
+//    fun buscarPorID(id: Long): Topico {
+//        return topicos.stream().filter({ topico ->
+//            topico.id == id
+//        }).findFirst().get()
+//    }
+
     fun buscarPorID(id: Long): Topico {
-        return topicos.stream().filter({ topico ->
+        return topicos.filter{ topico ->
             topico.id == id
-        }).findFirst().get()
+        }.first()
     }
 }
+
