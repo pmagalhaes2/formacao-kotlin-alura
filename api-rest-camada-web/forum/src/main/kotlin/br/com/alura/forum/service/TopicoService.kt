@@ -3,6 +3,8 @@ package br.com.alura.forum.service
 import br.com.alura.forum.dto.AtualizacaoTopicoForm
 import br.com.alura.forum.dto.NovoTopicoForm
 import br.com.alura.forum.dto.TopicoView
+import br.com.alura.forum.exception.ExceptionHandler
+import br.com.alura.forum.exception.NotFoundException
 import br.com.alura.forum.mapper.TopicoFormMapper
 import br.com.alura.forum.mapper.TopicoViewMapper
 import br.com.alura.forum.model.Topico
@@ -12,7 +14,8 @@ import org.springframework.stereotype.Service
 class TopicoService(
     private var topicos: List<Topico> = ArrayList(),
     private val topicoViewMapper: TopicoViewMapper,
-    private val topicoFormMapper: TopicoFormMapper
+    private val topicoFormMapper: TopicoFormMapper,
+    private val notFoundMessage: String = "Tópico não encontrado"
 ) {
 
     fun listar(): List<TopicoView> {
@@ -24,7 +27,7 @@ class TopicoService(
     fun buscarPorID(id: Long): TopicoView {
         val topico = topicos.filter { topico ->
             topico.id == id
-        }.first()
+        }.firstOrNull() ?: throw NotFoundException(notFoundMessage)
         return topicoViewMapper.map(topico)
     }
 
@@ -56,7 +59,7 @@ class TopicoService(
     fun deletarTopico(id: Long) {
         val topico = topicos.filter { topico ->
             topico.id == id
-        }.first()
+        }.firstOrNull() ?: throw NotFoundException(notFoundMessage)
         topicos = topicos.minus(topico)
     }
 }
